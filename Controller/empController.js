@@ -7,11 +7,15 @@ const empHome=(req, res)=>{
 const empInsert=(req,res)=>{
     res.render("Insert")
 }
-const empDisplay=(req,res)=>{
-    res.render("Display")
+const empDisplay=async(req,res)=>{
+    const myData=await EmpModel.find();
+    console.log(myData);
+    res.render("Display", {Data:myData});
 }
-const empContact=(req,res)=>{
-    res.render("Contact")
+const empContact=async(req,res)=>{
+    const Data=await EmpModel.find();
+    console.log(Data);
+    res.render("Contact", {Data:Data})
 }
 
 const studatasave=(req,res)=>{
@@ -25,10 +29,20 @@ const studatasave=(req,res)=>{
     res.render("Insert");
 }
 
+const recordDelete=async(req,res)=>{
+  const Myid=req.query.id;
+  await EmpModel.findByIdAndDelete(Myid);
+
+  const Data=await EmpModel.find();
+  res.render("Contact", {Data:Data});
+
+  res.render("Home");
+}
 module.exports={
     empHome,
     empInsert,
     empDisplay,
     empContact,
-    studatasave
+    studatasave,
+    recordDelete
 }
