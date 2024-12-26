@@ -1,16 +1,30 @@
 
 
 
+// const express=require("express");
+// const route=express.Router();
+
+// const EmpController=require("../Controller/empController");
+
+// route.get("/", EmpController.empHome);
+// route.get("/insert", EmpController.empInsert);
+// route.get("/display", EmpController.empDisplay);
+// route.get("/contact", EmpController.empContact);
+// route.post("/datasave", EmpController.studatasave);
+// route.get("/recdel", EmpController.recordDelete);
+
+// module.exports=route;
+
+// ============================================================================
 const express=require("express");
 const route=express.Router();
 
 const EmpController=require("../Controller/empController");
 
-route.get("/", EmpController.empHome);
+route.get("/",EmpController.empHome);
 route.get("/insert", EmpController.empInsert);
 route.get("/display", EmpController.empDisplay);
-route.get("/contact", EmpController.empContact);
-route.post("/datasave", EmpController.studatasave);
-route.get("/recdel", EmpController.recordDelete);
-
+route.get("/contact", EmpController.empContact );
+route.post("/datasave", EmpController.StudentDataSave);
+route.get("/recdel", EmpController.studataDelete);
 module.exports=route;
